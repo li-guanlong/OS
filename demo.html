@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* 样式仅需配置此项 */
+  .hide {
+    display: none;
+  }
+  /* demo样式 */
+  #code {
+    margin: 100px 60px 0 200px;
+    float: left;
+  }
+  #os_1,  #os_2, #os_0 {
+    display: flex;
+    width: 320px;
+    background: #f9f7fa;
+    border-radius: 10px 10px 0 0;
+    color: #333;
+    font-size: 16px;
+  }
+  #os_1 div, #os_2 div, #os_0 div {
+    width: 106px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+  #os_0 {
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  #os_1 div.current, #os_2 div.current, #os_0 div.current {
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(to right bottom, #fc037b, #e50418);
+  }
+  #os_0 div.current {
+    border-radius: 10px;
+  }
+  #os_options_1, #os_options_2 {
+    width: 318px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 0 0 10px 10px;
+    border: 1px dashed #e8e8e8;
+    margin-bottom: 20px;
+  }
+  #os_3 {
+    width: 320px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background: #f9f7fa;
+    border-radius: 10px;
+  }
+  #os_3.current {
+    color: #fff;
+    background: linear-gradient(to right bottom, #fc037b, #e50418);
+  }
+  #codeShow, #codeShow2{
+    float: left;
+    width: 600px;
+    height: 630px;
+    margin: 100px 0 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    line-height: 30px;
+    font-size: 18px;
+  }
+  #codeShow2 {
+    width: 400px;
+    margin-left: 20px;
+  }
+</style>
+<body>
+  <div id="code">
+    <!-- demo0 -->
+    <div id="os_0">
+      <div class="current">模块一</div>
+      <div>模块二</div>
+      <div>模块三</div>
+    </div>
+
+    <!-- demo1 -->
+    <!--配置选项菜单栏-->
+    <div id="os_1">
+      <div class="current">模块一</div>
+      <div>模块二</div>
+      <div>模块三</div>
+    </div>
+    <!--配置对应选项内容结构-->
+    <div id="os_options_1">
+      <div>这里是demo1模块一</div>
+      <div class="hide">这里是demo1模块二</div>
+      <div class="hide">这里是demo1模块三</div>
+    </div>
+
+    <!-- demo2 -->
+    <div id="os_2">
+      <div class="current">模块一</div>
+      <div>模块二</div>
+      <div>模块三</div>
+    </div>
+    <div id="os_options_2">
+      <div>这里是demo2模块一</div>
+      <div class="hide">这里是demo2模块二</div>
+      <div class="hide">这里是demo2模块三</div>
+    </div>
+
+    <!-- demo3 -->
+    <div id="os_3">demo3 功能类型为1 demo</div>
+  </div>
+  <textarea id="codeShow" name="" id="" cols="30" rows="10"></textarea>
+  <textarea id="codeShow2" name="" id="" cols="30" rows="10"></textarea>
+</body>
+<script type="text/javascript" src="./os_1.0.0/os_1.0.0.min.js"></script>
+<script>
+  document.getElementById("codeShow").value = `
+  ==============================================================
+  HTML结构
+  ==============================================================
+  `
+  document.getElementById("codeShow").value += document.getElementById("code").innerHTML;
+  document.getElementById("codeShow").value += `
+  ==============================================================
+  js
+  ==============================================================
+  let a = new oS([
+    {handlers: "os_0", event: "mouseenter"},
+    {handlers: "os_1", performer: "os_options_1", event: "click"},
+    {handlers: "os_2", performer: "os_options_2", event: "mouseenter"},
+    {handlers: "os_3", event: "mouseenter", type: 1, callback: function() {
+      // document.getElementById("os_3").className = 'current'
+      document.getElementById("os_3").classList.add('current')
+      this.onmouseleave = function() {
+        document.getElementById("os_3").classList.remove('current')
+      }
+    }}, 
+  ]);
+  console.log(a) //打印实例内部参数及查看运行状态
+  `;
+  document.getElementById("codeShow").value += `
+  ==============================================================
+  CSS
+  ==============================================================
+  /* 样式仅需配置此项 */
+  .hide {
+    display: none;
+  }
+  /* demo样式 */
+  #code {
+    margin: 100px 60px 0 200px;
+    float: left;
+  }
+  #os_1,  #os_2, #os_0 {
+    display: flex;
+    width: 320px;
+    background: #f9f7fa;
+    border-radius: 10px 10px 0 0;
+    color: #333;
+    font-size: 16px;
+  }
+  #os_1 div, #os_2 div, #os_0 div {
+    width: 106px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+  #os_0 {
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  #os_1 div.current, #os_2 div.current, #os_0 div.current {
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(to right bottom, #fc037b, #e50418);
+  }
+  #os_0 div.current {
+    border-radius: 10px;
+  }
+  #os_options_1, #os_options_2 {
+    width: 318px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 0 0 10px 10px;
+    border: 1px dashed #e8e8e8;
+    margin-bottom: 20px;
+  }
+  #os_3 {
+    width: 320px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    background: #f9f7fa;
+    border-radius: 10px;
+  }
+  #os_3.current {
+    color: #fff;
+    background: linear-gradient(to right bottom, #fc037b, #e50418);
+  }
+  #codeShow {
+    float: left;
+    width: 600px;
+    height: 630px;
+    margin: 100px 0 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  `;
+
+
+  let a = new oS([
+    {handlers: "os_0", event: "mouseenter"},
+    {handlers: "os_1", performer: "os_options_1", event: "click"},
+    {handlers: "os_2", performer: "os_options_2", event: "mouseenter"},
+    {handlers: "os_3", event: "mouseenter", type: 1, callback: function() {
+      // document.getElementById("os_3").className = 'current'
+      document.getElementById("os_3").classList.add('current')
+      this.onmouseleave = function() {
+        document.getElementById("os_3").classList.remove('current')
+      }
+    }}, 
+  ]);
+  console.log(a) //打印实例内部参数及查看运行状态
+
+  document.getElementById("codeShow2").value = '-------打印实例内部参数及查看运行状态-------'
+  document.getElementById("codeShow2").value += JSON.stringify(a);
+</script>
+</html>
