@@ -20,4 +20,4 @@
 
 ###### demo地址传送 --->  <https://li-guanlong.github.io/os_1.0.0/demo.html>
 
-###### 下载插件地址传送 --->  <https://github.com/li-guanlong/li-guanlong.github.io/tree/main/os_1.0.0>
+###### 下载插件地址传送 --->  <https://github.com/li-guanlong/OS/tree/main/os_1.0.0>
