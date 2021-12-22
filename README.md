@@ -3,7 +3,7 @@
 =====================================================================
 ##### 为了避免重复构建功能性较为单一的选项卡功能，基于此封装了一个基于JS原生的简单易用的选项卡小插件，初代版可能比较简陋，会根据后面业务需求不断完善。
 
-
+> 配置参数
 
     /**
      * Options Switch Handover / created by Mr.boring007 / 1.0.0 / 2021.07.06
@@ -17,6 +17,27 @@
      * 
      * 例： {handlers: "os_1", performer: "os_options_1", event: "mouseenter",  type: 0, , callback: function() {}},
     */
+    
+> 引入插件
+
+`<script type="text/javascript" src="./os_1.0.0/os_1.0.0.min.js"></script>`
+
+> 功能配置
+
+    let os = new oS([
+        {handlers: "os_0", event: "mouseenter"},
+        {handlers: "os_1", performer: "os_options_1", event: "click"},
+        {handlers: "os_2", performer: "os_options_2", event: "mouseenter"},
+        {handlers: "os_3", event: "mouseenter", type: 1, callback: function() {
+            document.getElementById("os_3").classList.add('current')
+            this.onmouseleave = function() {
+                document.getElementById("os_3").classList.remove('current')
+            }
+        }}, 
+    ]);
+    console.log(os) //打印实例内部参数及查看运行状态
+
+
 
 ###### demo地址传送 --->  <https://li-guanlong.github.io/os_1.0.0/demo.html>
 
